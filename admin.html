@@ -63,6 +63,19 @@
     .card, .stat { box-shadow:none; border:1px solid #333; }
     @page { size:A4; margin:1.4cm; }
   }
+  .print-doc { display:none; }
+  @media print {
+    .print-doc { display:block !important; font-size:13px; line-height:1.85; margin-bottom:16px; }
+    .print-doc h1 { font-size:19px; margin-bottom:2px; }
+    .print-doc .sub { font-size:12.5px; color:#555; margin-bottom:12px; }
+    .print-doc p { margin-bottom:8px; }
+    .print-doc h2 { font-size:14.5px; margin:14px 0 6px; padding-bottom:4px; border-bottom:1.5px solid #333; }
+    .print-doc table.signers { width:100%; border-collapse:collapse; font-size:12.5px; margin:6px 0 8px; }
+    .print-doc table.signers th { background:#f0f0f0; border:1px solid #333; padding:5px 8px; }
+    .print-doc table.signers td { border:1px solid #555; padding:5px 8px; text-align:center; }
+    .print-doc .mode { border:1px solid #333; border-radius:4px; padding:7px 11px; margin-top:4px; }
+    .print-doc .note-id { font-size:11.5px; color:#666; margin-top:4px; }
+  }
 </style>
 </head>
 <body>
@@ -104,6 +117,25 @@
         <button class="dl-btn dl-open" onclick="setDeadline('open')">פתח ללא הגבלה</button>
       </div>
       <div class="dl-msg" id="dlMsg"></div>
+    </div>
+
+    <div class="print-doc">
+      <h1>פרוטוקול ואישור פתיחת חשבון בנק לוועד הבית — יעל רום 6, ראשון לציון</h1>
+      <div class="sub">תאריך האסיפה: 7.9.2026</div>
+      <p>באסיפת בעלי הדירות של ועד בית יעל רום 6, ראשון לציון, הוצג הצורך בפתיחת חשבון בנק ייעודי עבור ועד הבית, לצורך ניהול מסודר ושקוף של כספי הבניין.</p>
+      <p>לאחר הצגת הנושא והדיון שהתקיים, בעלי הדירות <b>מאשרים את פתיחת חשבון הבנק</b> עבור ועד הבית של הבניין ב<b>בנק לאומי, סניף 944</b>.</p>
+      <p>החשבון ישמש לניהול כספי ועד הבית, לרבות גביית תשלומים מהדיירים, תשלום לספקים ונותני שירותים, תחזוקה שוטפת, שדרוגים והוצאות הקשורות לניהול הבניין.</p>
+      <p>בעלי הדירות מסמיכים את נציגות הבית המשותף לפעול מול הבנק לצורך פתיחת החשבון וניהולו, בהתאם להחלטות הנציגות ולנהלי הבנק.</p>
+      <h2>מורשי חתימה</h2>
+      <p>האסיפה מאשרת כי מורשי החתימה בחשבון יהיו:</p>
+      <table class="signers"><tr><th>#</th><th>שם מלא</th></tr>
+        <tr><td>1</td><td>שנהב טפירו</td></tr>
+        <tr><td>2</td><td>איתי בן שאול</td></tr>
+      </table>
+      <p class="note-id">פרטי הזיהוי המלאים של מורשי החתימה יימסרו ישירות לבנק.</p>
+      <p class="mode"><b>אופן החתימה המחייב:</b> חתימת שני מורשי החתימה יחד.</p>
+      <h2>אישור בעלי הדירות</h2>
+      <p>רשימת בעלי הדירות והאישורים מצורפת להלן ומהווה חלק בלתי נפרד מפרוטוקול זה.</p>
     </div>
 
     <div class="stats-row" id="statsRow">
