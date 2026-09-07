@@ -58,7 +58,7 @@
   .ld-sub { font-size:12.5px; color:#888; margin-top:8px; line-height:1.6; max-width:340px; margin-inline:auto; }
 
   @media print {
-    .topbar, .no-print, .dl-card { display:none !important; }
+    .topbar, .no-print, .dl-card, .stats-row { display:none !important; }
     body { background:#fff; }
     .card, .stat { box-shadow:none; border:1px solid #333; }
     @page { size:A4; margin:1.4cm; }
@@ -307,7 +307,7 @@ function render(entries){
     document.getElementById('statsRow').style.gridTemplateColumns = '1fr 1fr';
   }
 
-  const labels = { apt:'דירה', name:'שם', phone:'טלפון', email:'מייל', choice:'הצבעה', floor:'קומה', ts:'מועד' };
+  const labels = { apt:'דירה', name:'שם', phone:'טלפון', email:'מייל', choice:'הצבעה', floor:'קומה', sig:'חתימה', signature:'חתימה', ts:'מועד' };
   const cols = entries.length ? Object.keys(entries[0]).filter(c => c !== 'ts').concat('ts') : [];
   document.getElementById('thead').innerHTML = '<th>#</th>' + cols.map(c => '<th>' + esc(labels[c] || c) + '</th>').join('');
 
