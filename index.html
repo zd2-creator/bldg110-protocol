@@ -120,7 +120,8 @@
   input.invalid, select.invalid { border-color:#c0392b; }
   select option:disabled { color:#bbb; }
   .hint { display:block; font-size:11.5px; color:#999; margin-top:5px; }
-  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:end; }
+  .grid2 label { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .declare { display:flex; gap:9px; align-items:flex-start; background:#f8f9fa; border:1px solid #e5e5e5; border-radius:9px; padding:12px 13px; margin:4px 0 14px; font-size:13px; color:#444; font-weight:400; line-height:1.5; cursor:pointer; }
   .declare input { width:18px; height:18px; flex-shrink:0; margin-top:1px; accent-color:#1D9E75; cursor:pointer; }
   .declare.invalid { border-color:#c0392b; background:#fdecea; }
@@ -288,7 +289,7 @@
         <input id="f_name" placeholder="ישראל ישראלי" autocomplete="name" />
       </div>
       <div class="field">
-        <label>שם בעל/ת דירה נוסף/ת <span class="lbl-sub">— אם יש</span></label>
+        <label>שם נוסף/ת <span class="lbl-sub">(אם יש)</span></label>
         <input id="f_name2" placeholder="רות ישראלי" />
       </div>
     </div>
