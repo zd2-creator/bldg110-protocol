@@ -352,7 +352,7 @@ const MAJORITY_SUB = 'על פי תקנון הבית המשותף נדרש רוב
 
 // ── שער כניסה (הסיסמה נבדקת בשרת ונשמרת במכשיר) ──
 const GATED = true;
-const GATE_KEY = 'gate_' + FORM_KEY;
+const GATE_KEY = 'bldg110_gate';  // מפתח משותף — הזנה אחת פותחת את כל טפסי הבניין
 let GATE = '';
 try { GATE = localStorage.getItem(GATE_KEY) || ''; } catch(e) {}
 function showGate(msg){
