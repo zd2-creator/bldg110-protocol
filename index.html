@@ -196,6 +196,7 @@
   .apt-yes { background:#e0f5ee; color:#0F6E56; border:1px solid #9FE1CB; }
   .apt-no  { background:#fdecea; color:#c0392b; border:1px solid #f5c6c0; }
   .apt-off { background:#f5f5f5; color:#ccc; border:1px dashed #e0e0e0; }
+  .success .resend { margin-top:16px; background:none; border:1px solid #9FE1CB; color:#0d6e52; border-radius:8px; padding:8px 18px; font-size:13px; font-weight:700; font-family:inherit; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -390,6 +391,25 @@ function fabCheck(){
 }
 addEventListener('scroll', fabCheck, { passive:true });
 setTimeout(fabCheck, 1200);
+// ── זיכרון קבוע במכשיר: מי ששלח רואה את האישור גם אחרי סגירת הדף ──
+const DONE_KEY = 'done_' + FORM_KEY;
+function saveDone(info){ try { localStorage.setItem(DONE_KEY, JSON.stringify(info)); } catch(e) {} }
+function loadDone(){ try { return JSON.parse(localStorage.getItem(DONE_KEY) || 'null'); } catch(e) { return null; } }
+function renderDone(info){
+  const fc = document.getElementById('formCard');
+  fc.className = 'card success';
+  fc.style.display = 'block';
+  fc.innerHTML =
+    '<div class="big">✅</div>' +
+    '<h2>האישור שלך נקלט!</h2>' +
+    '<p>' + escHtml(info.line) + '</p>' +
+    '<p class="succ-sub">נשלח ב-' + escHtml(info.at) + ' · תודה על ההשתתפות 🙏</p>' +
+    '<button class="resend" onclick="clearDone()">שלח/י שוב</button>';
+  if (typeof fabDone !== 'undefined') { fabDone = true; const fb = document.getElementById('fabSign'); if (fb) fb.classList.add('hidden'); }
+}
+function clearDone(){ try { localStorage.removeItem(DONE_KEY); } catch(e) {} location.reload(); }
+function escHtml(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
 let DEADLINE_OVERRIDE = null;
 function effectiveDeadline(){
   if (DEADLINE_OVERRIDE) return DEADLINE_OVERRIDE;
@@ -509,7 +529,10 @@ document.getElementById('submitBtn').addEventListener('click', function(){
   function escT(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   // הקובייה של הטופס מתחלפת במקומה בהודעת ההצלחה (לא כרטיס נפרד למטה שלא רואים)
+  function doneLine(){ return 'דירה ' + apt + ' — ' + values.name; }
   function onSuccess(){
+    // שמירה קבועה במכשיר — כך שגם אחרי סגירה יראה שכבר אישרת
+    saveDone({ line: doneLine(), at: new Date().toLocaleString('he-IL') });
     fabDone = true; fabBtn.classList.add('hidden');
     clearTimeout(t1); clearTimeout(t2);
     const fc = document.getElementById('formCard');
@@ -655,6 +678,8 @@ function renderStats(data){
       checkMajority(withChoice ? yes : voted.length);
   }
 }
+const _done = loadDone();
+if (_done) renderDone(_done);
 loadProgress();
 </script>
 </body>
