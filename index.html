@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אישור פתיחת חשבון בנק לוועד הבית · בניין 110</title>
+<!-- תצוגה מקדימה בוואטסאפ: כותרת + תיאור קצר (עד ~40 תווים נכנס בשלמותו) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zd2-creator.github.io/bldg110-protocol/">
+<meta property="og:site_name" content="ועד בית · בניין 110">
+<meta property="og:title" content="📋 פרוטוקול אסיפת דיירים · יעל רום 6">
+<meta property="og:description" content="בעלי הדירות מתבקשים לאשר בחתימה 🙏">
+<meta property="og:locale" content="he_IL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="📋 פרוטוקול אסיפת דיירים · יעל רום 6">
+<meta name="twitter:description" content="בעלי הדירות מתבקשים לאשר בחתימה 🙏">
+<meta name="theme-color" content="#1D9E75">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  body { font-family:'Heebo',Arial,sans-serif; background:linear-gradient(180deg,#eef7f3 0%,#f5f5f5 260px); direction:rtl; color:#333; line-height:1.6; }
+  .page { max-width:560px; margin:0 auto; padding:16px 16px 60px; }
+  .hero { text-align:center; padding:20px 10px 8px; }
+  .hero h1 { font-size:22px; font-weight:800; margin-bottom:6px; }
+  .hero p { color:#666; font-size:14px; }
+  .card { background:#fff; border:1px solid #ddd; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 6px 20px -12px rgba(0,0,0,.15); }
+  .card h2 { font-size:16px; margin-bottom:16px; font-weight:700; }
+
+  /* הודעת הנציגות (INTRO_HTML) */
+  .msg { font-size:14.5px; line-height:1.8; }
+  .msg p { margin-bottom:10px; }
+  .msg .vote-opts { background:#f8f9fa; border:1px solid #eee; border-radius:10px; padding:12px 14px; margin:10px 0; }
+  .msg .vote-opts div { margin:4px 0; }
+  .msg .signoff { color:#666; }
+
+  /* אקורדיון מידע (אופציונלי ב-INTRO_HTML) */
+  details.prio { border:1.5px solid #e5e5e5; border-radius:10px; margin-bottom:10px; overflow:hidden; background:#fff; }
+  details.prio summary { list-style:none; cursor:pointer; padding:13px 16px; display:flex; align-items:center; gap:10px; font-weight:700; font-size:14.5px; user-select:none; }
+  details.prio summary::-webkit-details-marker { display:none; }
+  details.prio summary .arrow { margin-inline-start:auto; transition:transform .2s; color:#999; font-size:12px; }
+  details.prio[open] summary .arrow { transform:rotate(180deg); }
+  details.prio summary .sum-cost { font-weight:800; font-size:13.5px; white-space:nowrap; }
+  .tag { font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:20px; white-space:nowrap; }
+  .tag-high { background:#e0f5ee; color:#0d6e52; } .tag-mid { background:#fef3e2; color:#b26a00; } .tag-low { background:#f0f0f0; color:#777; }
+  .items { border-top:1px solid #eee; }
+  .item { display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:9px 16px; border-bottom:1px solid #f4f4f4; }
+  .item:last-child { border-bottom:none; }
+  .item .nm { font-size:13.5px; } .item .nm .qty { color:#999; font-size:12px; }
+  .item .nm .note { display:block; color:#999; font-size:11.5px; line-height:1.5; }
+  .item .cost { font-size:13px; font-weight:700; white-space:nowrap; color:#444; }
+  .cost-box { background:linear-gradient(135deg,#e0f5ee,#f0faf6); border:1.5px solid #9FE1CB; border-radius:12px; padding:16px; text-align:center; margin-top:14px; }
+  .cost-box .total { font-size:15px; color:#555; } .cost-box .total b { color:#0d6e52; }
+  .cost-box .per { font-size:24px; font-weight:800; color:#0d6e52; margin:4px 0 2px; }
+  .cost-box .cap { font-size:12.5px; color:#666; }
+  .cost-box .note-est { font-size:12.5px; color:#8a5a00; background:#fff8ec; border:1px solid #f5d9a8; border-radius:8px; padding:8px 12px; margin-top:12px; font-weight:700; line-height:1.5; }
+
+  /* מסמך הפרוטוקול */
+  .hero h1 { font-size:24px; letter-spacing:-.3px; }
+  .doc { padding:0; overflow:hidden; border-color:#d6e9df; }
+  .doc-head { background:linear-gradient(135deg,#0d6e52,#1D9E75); color:#fff; padding:22px 22px 18px; }
+  .doc-kicker { font-size:12px; font-weight:700; letter-spacing:.5px; opacity:.85; text-transform:uppercase; }
+  .doc-title { font-size:20px; font-weight:800; margin:4px 0 10px; line-height:1.3; }
+  .doc-meta { display:flex; gap:14px; flex-wrap:wrap; font-size:13px; opacity:.95; }
+  .doc-sec { display:flex; gap:14px; padding:14px 22px; border-bottom:1px solid #f0f0f0; font-size:14.5px; line-height:1.75; }
+  .doc-num { flex:0 0 28px; height:28px; border-radius:50%; background:#e0f5ee; color:#0d6e52; font-weight:800; font-size:13px; display:flex; align-items:center; justify-content:center; margin-top:2px; }
+  .doc-body b { color:#0d6e52; }
+  .signers { margin:16px 22px; background:#f8fbf9; border:1.5px solid #d6e9df; border-radius:12px; padding:14px 16px; }
+  .signers-title { font-weight:800; font-size:14px; color:#0d6e52; margin-bottom:10px; }
+  .signer { display:flex; align-items:center; gap:12px; padding:8px 0; border-bottom:1px dashed #e3ede8; }
+  .signer:last-of-type { border-bottom:none; }
+  .avatar { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#1D9E75,#0d6e52); color:#fff; font-weight:800; font-size:17px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .sname { font-weight:700; font-size:15px; }
+  .srole { font-size:12.5px; color:#777; }
+  .sign-mode { margin-top:12px; padding:10px 12px; background:#fff; border:1px solid #d6e9df; border-radius:8px; font-size:13.5px; text-align:center; }
+  .sign-mode b { color:#0d6e52; }
+  .sign-note { font-size:11.5px; color:#999; text-align:center; margin-top:8px; }
+  .doc-foot { padding:14px 22px 20px; font-size:13.5px; color:#555; line-height:1.7; }
+  .doc-foot .sig-off { margin-top:10px; font-weight:700; color:#333; }
+  .lbl-sub { font-weight:400; color:#999; font-size:12px; }
+  .consent { font-size:12.5px; color:#555; background:#f8f9fa; border-radius:9px; padding:10px 13px; margin-bottom:14px; line-height:1.6; border:1px solid #eee; }
+  #sigCanvas { height:130px; background:#fff repeating-linear-gradient(0deg, transparent 0 129px, #eee 129px 130px); }
+
+  /* טופס */
+  .field { margin-bottom:14px; }
+  label { display:block; font-size:13px; color:#555; margin-bottom:5px; font-weight:600; }
+  label .req { color:#c0392b; }
+  input, select { width:100%; padding:11px 12px; border:1.5px solid #ccc; border-radius:8px; font-size:15px; font-family:inherit; direction:rtl; background:#fafafa; }
+  input:focus, select:focus { outline:none; border-color:#1D9E75; background:#fff; }
+  input.invalid, select.invalid { border-color:#c0392b; }
+  select option:disabled { color:#bbb; }
+  .hint { display:block; font-size:11.5px; color:#999; margin-top:5px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .declare { display:flex; gap:9px; align-items:flex-start; background:#f8f9fa; border:1px solid #e5e5e5; border-radius:9px; padding:12px 13px; margin:4px 0 14px; font-size:13px; color:#444; font-weight:400; line-height:1.5; cursor:pointer; }
+  .declare input { width:18px; height:18px; flex-shrink:0; margin-top:1px; accent-color:#1D9E75; cursor:pointer; }
+  .declare.invalid { border-color:#c0392b; background:#fdecea; }
+  .choice-cards { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
+  .choice-card { border:2px solid #ddd; border-radius:10px; padding:16px 10px; text-align:center; cursor:pointer; transition:all .18s; background:#fff; }
+  .choice-card .ic { font-size:28px; margin-bottom:6px; }
+  .choice-card .t { font-weight:700; font-size:15px; }
+  .choice-card .s { font-size:11.5px; color:#999; margin-top:2px; }
+  .choice-card:hover { border-color:#aaa; }
+  .choice-card.sel { border-color:#1D9E75; background:#e0f5ee; } .choice-card.sel .t { color:#0d6e52; }
+  .choice-card.sel-no { border-color:#c0392b; background:#fdecea; } .choice-card.sel-no .t { color:#8e2b20; }
+  #sigCanvas { width:100%; height:110px; border:1.5px solid #ccc; border-radius:8px; touch-action:none; background:#fff; display:block; }
+  .sig-clear { font-size:12px; color:#888; background:none; border:1px solid #ddd; border-radius:6px; padding:4px 10px; margin-top:6px; cursor:pointer; }
+  .btn { width:100%; padding:13px; background:#1D9E75; color:#fff; border:none; border-radius:10px; font-size:16px; font-weight:800; cursor:pointer; font-family:inherit; margin-top:4px; }
+  .btn:disabled { background:#aaa; cursor:not-allowed; }
+  .err { color:#c0392b; font-size:13px; margin-top:8px; display:none; } .err.show { display:block; }
+  .loading { display:none; text-align:center; padding:10px; color:#666; font-size:14px; }
+  .success { text-align:center; padding:34px 18px; background:linear-gradient(135deg,#e0f5ee,#f0faf6) !important; border:2px solid #1D9E75 !important; animation:popIn .5s cubic-bezier(.175,.885,.32,1.275); }
+  .success .big { font-size:64px; } .success h2 { font-size:24px; color:#0d6e52; margin:8px 0 8px; font-weight:800; }
+  .success p { font-size:16px; color:#0d6e52; font-weight:700; } .success .succ-sub { font-size:13.5px; color:#555; font-weight:400; margin-top:10px; }
+  .sending { display:none; text-align:center; padding:14px 10px 6px; }
+  .sending .mini-spin { display:inline-block; width:20px; height:20px; border:3px solid #e0f5ee; border-top-color:#1D9E75; border-radius:50%; animation:spin .8s linear infinite; vertical-align:-5px; margin-inline-end:8px; }
+  .sending .st { font-size:14.5px; font-weight:700; color:#333; } .sending small { display:block; color:#888; font-size:12px; margin-top:6px; line-height:1.5; }
+
+  /* דדליין */
+  .deadline { display:none; background:#fff8ec; border:1.5px solid #f5d9a8; border-radius:12px; padding:12px 16px; text-align:center; font-size:14px; font-weight:700; color:#8a5a00; margin-bottom:16px; }
+  .deadline .cd { display:block; font-size:12.5px; font-weight:600; color:#b07d1e; margin-top:3px; }
+  .closed { text-align:center; padding:30px 20px; border:2px solid #e0b4ae !important; background:#fdf3f2 !important; }
+  .closed .big { font-size:50px; } .closed h2 { color:#a33224; font-size:20px; margin:8px 0 8px; }
+  .closed p { color:#7a4b44; font-size:14.5px; margin-bottom:6px; }
+
+  /* חגיגת רוב */
+  .maj-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:1000; align-items:center; justify-content:center; animation:fadeIn .4s ease; }
+  .maj-overlay.show { display:flex; }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  .maj-card { background:#fff; border-radius:20px; padding:34px 28px; text-align:center; max-width:370px; width:88%; box-shadow:0 20px 60px rgba(0,0,0,.3); animation:popIn .5s cubic-bezier(.175,.885,.32,1.275); }
+  @keyframes popIn { from{transform:scale(.5);opacity:0} to{transform:scale(1);opacity:1} }
+  .maj-emoji { font-size:56px; animation:bounce 1.2s ease infinite; display:inline-block; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .maj-title { font-size:22px; font-weight:800; color:#0d6e52; margin:10px 0 6px; }
+  .maj-sub { font-size:14.5px; color:#555; line-height:1.7; margin-bottom:16px; }
+  .maj-stat { background:linear-gradient(135deg,#e0f5ee,#c8edd9); border:2px solid #1D9E75; border-radius:14px; padding:14px; margin-bottom:18px; }
+  .maj-stat .big-pct { font-size:38px; font-weight:800; color:#0d6e52; line-height:1.1; }
+  .maj-stat .small { font-size:13px; color:#177a5c; font-weight:700; }
+  .maj-btn { background:#1D9E75; color:#fff; border:none; border-radius:12px; padding:13px 26px; font-size:15px; font-weight:800; cursor:pointer; font-family:inherit; width:100%; }
+  #confettiCanvas { position:fixed; inset:0; pointer-events:none; z-index:1001; display:none; }
+  .maj-banner { display:none; background:linear-gradient(135deg,#e0f5ee,#d2f0e2); border:2px solid #1D9E75; border-radius:12px; padding:13px 16px; text-align:center; font-size:14.5px; font-weight:800; color:#0d6e52; margin-bottom:16px; }
+
+  /* התקדמות */
+  .prog { background:#fff; border:1px solid #ddd; border-radius:12px; padding:16px; margin-top:16px; }
+  .prog-top { display:flex; justify-content:space-between; font-size:13px; color:#555; margin-bottom:8px; }
+  .prog-top strong { color:#1D9E75; }
+  .prog-loading { text-align:center; padding:22px 10px 14px; color:#666; font-size:13.5px; }
+  .prog-loading .mini-spin { display:inline-block; width:18px; height:18px; border:3px solid #e0f5ee; border-top-color:#1D9E75; border-radius:50%; animation:spin .8s linear infinite; vertical-align:-4px; margin-inline-end:8px; }
+  .prog-loading small { display:block; color:#aaa; font-size:11.5px; margin-top:6px; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .prog-sync { font-size:11px; color:#aaa; font-weight:400; margin-inline-start:6px; }
+  .prog-bar { height:12px; background:#eee; border-radius:10px; overflow:hidden; }
+  .prog-fill { height:100%; background:#1D9E75; border-radius:10px; transition:width .5s; width:0%; }
+  .vote-sum { display:none; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0 4px; }
+  .vote-sum.on { display:grid; }
+  .vbox { border-radius:10px; padding:12px; text-align:center; }
+  .vbox.yes { background:#e0f5ee; border:1px solid #9FE1CB; } .vbox.no { background:#fdecea; border:1px solid #f5c6c0; }
+  .vbox .n { font-size:26px; font-weight:800; } .vbox.yes .n { color:#0d6e52; } .vbox.no .n { color:#c0392b; }
+  .vbox .l { font-size:12px; color:#777; }
+  .map-label { font-size:12.5px; font-weight:700; color:#555; margin-top:12px; }
+  .legend { display:flex; gap:12px; font-size:11px; color:#888; margin:6px 0 8px; flex-wrap:wrap; }
+  .legend span { display:flex; align-items:center; gap:4px; }
+  .sw { width:12px; height:12px; border-radius:3px; display:inline-block; }
+  .apt-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(40px,1fr)); gap:5px; }
+  .apt-cell { height:36px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; }
+  .apt-yes { background:#e0f5ee; color:#0F6E56; border:1px solid #9FE1CB; }
+  .apt-no  { background:#fdecea; color:#c0392b; border:1px solid #f5c6c0; }
+  .apt-off { background:#f5f5f5; color:#ccc; border:1px dashed #e0e0e0; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <h1>אישור פתיחת חשבון בנק לוועד הבית</h1>
+    <p>יעל רום 6, ראשון לציון · בעלי הדירות מתבקשים לאשר בחתימה</p>
+  </div>
+
+  <div class="deadline" id="deadlineBox">
+    <span id="deadlineText">⏳ הטופס פתוח</span>
+    <span class="cd" id="countdown"></span>
+  </div>
+
+  <div class="maj-banner" id="majBanner">🎉 הושג רוב!</div>
+
+  <div class="card closed" id="closedCard" style="display:none">
+    <div class="big">⏰</div>
+    <h2>הטופס נסגר</h2>
+    <p id="closedText">המועד האחרון למילוי עבר.</p>
+    <p>לא ניתן לשלוח יותר. תודה לכל מי שהשתתף 🙏</p>
+  </div>
+
+    <!-- מסמך הפרוטוקול -->
+  <div class="card doc" id="msgCard">
+    <div class="doc-head">
+      <div class="doc-kicker">פרוטוקול אסיפת בעלי דירות</div>
+      <div class="doc-title">אישור פתיחת חשבון בנק לוועד הבית</div>
+      <div class="doc-meta"><span>🏢 יעל רום 6, ראשון לציון</span><span>📅 אסיפה: 7.9.2026</span></div>
+    </div>
+
+    <div class="doc-sec">
+      <div class="doc-num">1</div>
+      <div class="doc-body"><b>הרקע.</b> באסיפת בעלי הדירות של ועד בית יעל רום 6, ראשון לציון, הוצג הצורך בפתיחת חשבון בנק ייעודי עבור ועד הבית, לצורך ניהול מסודר ושקוף של כספי הבניין.</div>
+    </div>
+    <div class="doc-sec">
+      <div class="doc-num">2</div>
+      <div class="doc-body"><b>ההחלטה.</b> לאחר הצגת הנושא והדיון שהתקיים, בעלי הדירות מאשרים את פתיחת חשבון הבנק עבור ועד הבית של הבניין ב<b>בנק לאומי, סניף 944</b>.</div>
+    </div>
+    <div class="doc-sec">
+      <div class="doc-num">3</div>
+      <div class="doc-body"><b>ייעוד החשבון.</b> החשבון ישמש לניהול כספי ועד הבית, לרבות גביית תשלומים מהדיירים, תשלום לספקים ונותני שירותים, תחזוקה שוטפת, שדרוגים והוצאות הקשורות לניהול הבניין.</div>
+    </div>
+    <div class="doc-sec">
+      <div class="doc-num">4</div>
+      <div class="doc-body"><b>הסמכה.</b> בעלי הדירות מסמיכים את נציגות הבית המשותף לפעול מול הבנק לצורך פתיחת החשבון וניהולו, בהתאם להחלטות הנציגות ולנהלי הבנק.</div>
+    </div>
+
+    <div class="signers">
+      <div class="signers-title">🖋️ מורשי החתימה בחשבון</div>
+      <div class="signer"><span class="avatar">ש</span><div><div class="sname">שנהב טפירו</div><div class="srole">דירה 4 · חברת נציגות</div></div></div>
+      <div class="signer"><span class="avatar">א</span><div><div class="sname">איתי בן שאול</div><div class="srole">דירה 51 · חבר נציגות</div></div></div>
+      <div class="sign-mode">אופן החתימה המחייב: <b>חתימת שני מורשי החתימה יחד</b></div>
+      <div class="sign-note">פרטי הזיהוי המלאים של מורשי החתימה יימסרו ישירות לבנק.</div>
+    </div>
+
+    <div class="doc-foot">
+      <p>רשימת בעלי הדירות והאישורים (החתימות שנאספות בטופס זה) מצורפת לפרוטוקול ומהווה חלק בלתי נפרד ממנו.</p>
+      <p class="sig-off">נציגות ועד בית יעל רום 6, ראשון לציון</p>
+    </div>
+  </div>
+
+
+  <div class="card" id="formCard">
+    <h2>✍️ אישור וחתימה של בעל/ת הדירה</h2>
+        <div class="field">
+      <label>מספר דירה <span class="req">*</span></label>
+      <select id="f_apt"><option value="" disabled selected>בחר/י דירה</option></select>
+      <span class="hint" id="aptHint" style="display:none">✓ = כבר אישר/ה</span>
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label>שם בעל/ת הדירה <span class="req">*</span></label>
+        <input id="f_name" placeholder="ישראל ישראלי" autocomplete="name" />
+      </div>
+      <div class="field">
+        <label>שם בעל/ת דירה נוסף/ת <span class="lbl-sub">— אם יש</span></label>
+        <input id="f_name2" placeholder="רות ישראלי" />
+      </div>
+    </div>
+    <div class="field">
+      <label>חתימה ידנית <span class="req">*</span> <span class="lbl-sub">— חתמו עם האצבע בתוך המסגרת</span></label>
+      <canvas id="sigCanvas"></canvas>
+      <button class="sig-clear" onclick="clearSig()">נקה חתימה</button>
+    </div>
+    <div class="consent">בחתימתי אני מאשר/ת את ההחלטה על פתיחת חשבון הבנק לוועד הבית כמפורט בפרוטוקול לעיל.</div>
+
+    <div id="formErr" class="err"></div>
+    <button class="btn" id="submitBtn">אישור וחתימה ✓</button>
+    <div class="sending" id="loading"><span class="mini-spin"></span><span class="st" id="sendText">שולח…</span><small id="sendSub">אנא המתן — לא לסגור את הדף</small></div>
+  </div>
+
+  <div class="prog" id="progCard">
+    <div class="prog-top"><span>אישורי בעלי הדירות</span><strong id="progLabel"><span class="prog-sync" id="progSync"></span></strong></div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <div class="prog-loading" id="progLoading"><span class="mini-spin"></span><span id="progLdText">מושך את הנתונים מהשרת המאובטח…</span><small>בפעם הראשונה זה לוקח כמה שניות ☕ — אחר כך מיידי</small></div>
+    <div id="progBody">
+    <div class="vote-sum" id="voteSum">
+      <div class="vbox yes"><div class="n" id="cntYes">—</div><div class="l" id="lblYes">בעד</div></div>
+      <div class="vbox no"><div class="n" id="cntNo">—</div><div class="l" id="lblNo">נגד</div></div>
+    </div>
+    <div class="map-label">מפת דירות</div>
+    <div class="legend" id="legend"></div>
+    <div class="apt-grid" id="aptGrid"></div>
+    </div>
+  </div>
+</div>
+
+<div class="maj-overlay" id="majOverlay">
+  <div class="maj-card">
+    <span class="maj-emoji">🎉</span>
+    <div class="maj-title" id="majTitle">הושג רוב!</div>
+    <div class="maj-sub" id="majSub"></div>
+    <div class="maj-stat">
+      <div class="big-pct" id="majPct">—</div>
+      <div class="small" id="majCount"></div>
+    </div>
+    <button class="maj-btn" onclick="closeMaj()">מעולה! 🎉</button>
+  </div>
+</div>
+<canvas id="confettiCanvas"></canvas>
+
+<script>
+// ═══ הגדרות — הסקיל ממלא אותן ═══
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxn7f1-PycwsK8oh9uElLX_L6pe_bCwP7cg64k5YM97ybZ0GTssn3p5ziJX-vb47yVW/exec';      // ה-Backend המאוחד של בניין 110
+const FORM_KEY   = 'פרוטוקול';        // שם הלשונית בגיליון
+const FIELDS     = ['apt','name','sig'];       // שמות השדות בסדר קבוע (בלי 'declare')
+const TOTAL      = 52;                     // מספר הדירות בבניין
+const DEADLINE_DEFAULT = ''; // ISO כמו '2026-09-06T23:59:59+03:00', או '' לטופס ללא מועד
+const CHOICE_YES = '';      // ערך ה"כן" בשדה choice (למשל 'בעד'); '' אם אין שדה בחירה
+const CHOICE_NO  = '';       // ערך ה"לא" (למשל 'נגד'); '' אם אין
+const MAJORITY_TARGET = 35; // מספר דירות "כן" לחגיגה (למשל 35 = 67%); 0 = בלי חגיגה
+const MAJORITY_SUB = 'על פי תקנון הבית המשותף נדרש רוב של 67% לאישור — ועברנו אותו!';  // שורת הסבר בפופאפ, למשל 'נדרש רוב של 67% — ועברנו אותו!'
+// ═════════════════════════════════
+
+let DEADLINE_OVERRIDE = null;
+function effectiveDeadline(){
+  if (DEADLINE_OVERRIDE) return DEADLINE_OVERRIDE;
+  return DEADLINE_DEFAULT ? new Date(DEADLINE_DEFAULT) : null;
+}
+function pad2(n){ return n < 10 ? '0' + n : n; }
+const DAYS = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+function fmtDate(d){ return 'יום ' + DAYS[d.getDay()] + ' ' + d.getDate() + '.' + (d.getMonth()+1) + '.' + String(d.getFullYear()).slice(2) + ' בשעה ' + pad2(d.getHours()) + ':' + pad2(d.getMinutes()); }
+
+// ── דדליין: טיימר + נעילה אחרי המועד (האכיפה האמיתית בשרת) ──
+function updateDeadline() {
+  const box = document.getElementById('deadlineBox'), form = document.getElementById('formCard'), closed = document.getElementById('closedCard');
+  const dl = effectiveDeadline();
+  if (!dl || dl === 'open') { box.style.display = 'none'; closed.style.display = 'none'; return; }
+  const now = new Date();
+  if (dl === 'closed' || now > dl) {
+    form.style.display = 'none'; box.style.display = 'none'; closed.style.display = 'block';
+    if (dl !== 'closed') document.getElementById('closedText').textContent = 'המועד האחרון היה ' + fmtDate(dl) + '.';
+    return;
+  }
+  box.style.display = 'block'; closed.style.display = 'none';
+  const ms = dl - now, d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4);
+  document.getElementById('deadlineText').textContent = '⏳ פתוח עד ' + fmtDate(dl);
+  document.getElementById('countdown').textContent = 'נותרו ' + (d > 0 ? d + ' ימים, ' : '') + h + ' שעות ו-' + pad2(m) + ' דקות';
+}
+updateDeadline();
+setInterval(updateDeadline, 30000);
+
+// ── תפריט דירות (אם f_apt הוא select) + סימון דירות שכבר נרשמו ──
+const aptSel = document.getElementById('f_apt');
+if (aptSel && aptSel.tagName === 'SELECT') {
+  for (let i = 1; i <= TOTAL; i++) { const o = document.createElement('option'); o.value = String(i); o.textContent = 'דירה ' + i; aptSel.appendChild(o); }
+}
+function markVotedApts(votedSet){
+  if (!aptSel || aptSel.tagName !== 'SELECT') return;
+  let cur = false;
+  Array.from(aptSel.options).forEach(o => {
+    const n = parseInt(o.value); if (isNaN(n)) return;
+    o.disabled = votedSet.has(n);
+    o.textContent = 'דירה ' + n + (o.disabled ? ' ✓' : '');
+    if (o.disabled && aptSel.value === o.value) cur = true;
+  });
+  if (cur) aptSel.value = '';
+  const hint = document.getElementById('aptHint'); if (hint) hint.style.display = votedSet.size ? 'block' : 'none';
+}
+
+// ── בחירה בין אפשרויות ──
+let selectedChoice = null;
+function selectChoice(v, el) {
+  selectedChoice = v;
+  document.querySelectorAll('.choice-card').forEach(c => c.classList.remove('sel','sel-no'));
+  el.classList.add(CHOICE_NO && v === CHOICE_NO ? 'sel-no' : 'sel');
+}
+
+// ── חתימה (רק אם יש קנבס בטופס) ──
+const canvas = document.getElementById('sigCanvas');
+let hasSig = false;
+if (canvas) {
+  const ctx = canvas.getContext('2d'); let drawing = false;
+  function resize(){ const dpr = devicePixelRatio || 1, r = canvas.getBoundingClientRect(); if (canvas.width === r.width*dpr && canvas.height === r.height*dpr) return; canvas.width = r.width*dpr; canvas.height = r.height*dpr; ctx.scale(dpr,dpr); ctx.strokeStyle='#111'; ctx.lineWidth=2; ctx.lineCap='round'; ctx.lineJoin='round'; }
+  setTimeout(resize, 100); addEventListener('resize', resize);
+  function pos(e){ const r=canvas.getBoundingClientRect(); const t=e.touches?e.touches[0]:e; return {x:t.clientX-r.left, y:t.clientY-r.top}; }
+  function down(e){ e.preventDefault(); drawing=true; const p=pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); }
+  function move(e){ if(!drawing)return; e.preventDefault(); const p=pos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); hasSig=true; }
+  function up(){ drawing=false; }
+  canvas.addEventListener('mousedown',down); canvas.addEventListener('mousemove',move); canvas.addEventListener('mouseup',up); canvas.addEventListener('mouseleave',up);
+  canvas.addEventListener('touchstart',down,{passive:false}); canvas.addEventListener('touchmove',move,{passive:false}); canvas.addEventListener('touchend',up);
+  window.clearSig = function(){ ctx.clearRect(0,0,canvas.width,canvas.height); hasSig=false; };
+}
+function sigDataURL(){ const s=document.createElement('canvas'); s.width=300; s.height=90; s.getContext('2d').drawImage(canvas,0,0,300,90); return s.toDataURL('image/png'); }
+
+function showErr(msg){ const e=document.getElementById('formErr'); e.textContent=msg; e.classList.add('show'); }
+
+// ── שליחה ──
+document.getElementById('submitBtn').addEventListener('click', function(){
+  const dl = effectiveDeadline();
+  if (dl && dl !== 'open' && (dl === 'closed' || new Date() > dl)) { updateDeadline(); return; }
+
+  const values = {};
+  for (const f of FIELDS) {
+    if (f === 'sig' || f === 'signature') continue;
+    if (f === 'choice') { values[f] = selectedChoice; continue; }
+    const el = document.getElementById('f_' + f);
+    values[f] = el ? el.value.trim() : '';
+  }
+  for (const f of FIELDS) {
+    if (f === 'sig' || f === 'signature') continue;
+    const el = document.getElementById('f_' + f);
+    if (el && el.dataset.optional === '1') continue;
+    if (f === 'choice') { if (!selectedChoice) { showErr('יש לבחור אפשרות'); return; } continue; }
+    if (!values[f]) { showErr('יש למלא את כל השדות המסומנים ב-*'); if (el) el.classList.add('invalid'); return; }
+    if (el) el.classList.remove('invalid');
+  }
+  if (canvas && !hasSig) { showErr('יש לחתום בשדה החתימה'); return; }
+  const dec = document.getElementById('f_declare');
+  if (dec) {
+    if (!dec.checked) { showErr('יש לאשר את ההצהרה'); dec.closest('.declare').classList.add('invalid'); return; }
+    dec.closest('.declare').classList.remove('invalid');
+  }
+  document.getElementById('formErr').classList.remove('show');
+
+  const btn = document.getElementById('submitBtn'), loading = document.getElementById('loading');
+  btn.disabled = true; loading.style.display = 'block';
+  // שני השמות מאוחדים לשדה 'name' אחד — שם מוכר שהשרת מסתיר מהתצוגה הציבורית
+  const n2el = document.getElementById('f_name2');
+  const n2 = n2el ? n2el.value.trim() : '';
+  if (n2) values.name = values.name + ' ו' + n2;
+  if (canvas) values.sig = sigDataURL();
+  const apt = values.apt, choice = selectedChoice;
+
+  // Apps Script לפעמים עמוס (במיוחד כשכולם ממלאים יחד) — הודעות לפי משך ההמתנה
+  const sendText = document.getElementById('sendText'), sendSub = document.getElementById('sendSub');
+  sendText.textContent = 'שולח…'; sendSub.textContent = 'אנא המתן — לא לסגור את הדף';
+  const t1 = setTimeout(() => { sendText.textContent = 'עדיין שולח… השרת עמוס כרגע ⏳'; sendSub.textContent = 'זה קורה כשהרבה דיירים ממלאים יחד. עוד כמה שניות'; }, 6000);
+  const t2 = setTimeout(() => { sendText.textContent = 'לוקח יותר מהרגיל — אבל זה בדרך 🙏'; sendSub.textContent = 'אנא אל תסגור את הדף ואל תשלח שוב'; }, 18000);
+  function doneSending(){ clearTimeout(t1); clearTimeout(t2); btn.disabled = false; loading.style.display = 'none'; }
+  function escT(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // הקובייה של הטופס מתחלפת במקומה בהודעת ההצלחה (לא כרטיס נפרד למטה שלא רואים)
+  function onSuccess(){
+    clearTimeout(t1); clearTimeout(t2);
+    const fc = document.getElementById('formCard');
+    fc.className = 'card success'; fc.style.display = 'block';
+    fc.innerHTML = '<div class="big">✅</div><h2>נקלט בהצלחה!</h2>' +
+      '<p>' + (apt ? 'דירה ' + escT(apt) : '') + (choice ? ' — ' + escT(choice) : '') + '</p>' +
+      '<p class="succ-sub">תודה על ההשתתפות 🙏 אפשר לסגור את הדף.</p>';
+    setTimeout(() => fc.scrollIntoView({ behavior:'smooth', block:'center' }), 100);
+    loadProgress();
+  }
+  // אם התשובה מהשרת אבדה — בודקים במפה אם הרישום בכל זאת נקלט
+  function verifyViaStats(){
+    if (!apt) { doneSending(); showErr('השרת לא הגיב — נסה/י שוב בעוד רגע.'); return; }
+    sendText.textContent = 'מוודא שהרישום נקלט…'; sendSub.textContent = '';
+    fetch(SCRIPT_URL + '?action=formStats&form=' + encodeURIComponent(FORM_KEY) + '&t=' + Date.now())
+      .then(r => r.json())
+      .then(data => { if ((data.rows || []).some(r => String(r.apt) === String(apt))) onSuccess(); else { doneSending(); showErr('השרת לא הגיב בזמן — לא נראה שהרישום נקלט. נסה/י שוב בעוד רגע.'); } })
+      .catch(() => { doneSending(); showErr('אין חיבור לשרת כרגע — נסה/י שוב בעוד רגע.'); });
+  }
+
+  const ctrl = new AbortController();
+  const killer = setTimeout(() => ctrl.abort(), 45000);
+  fetch(SCRIPT_URL, { method:'POST', headers:{'Content-Type':'text/plain'}, signal: ctrl.signal,
+    body: JSON.stringify({ action:'formSubmit', form:FORM_KEY, fields:FIELDS, values:values }) })
+    .then(r => r.json())
+    .then(d => {
+      clearTimeout(killer);
+      if (d.status === 'ok') onSuccess();
+      else if (d.status === 'closed') { doneSending(); updateDeadline(); }
+      else if (d.status === 'duplicate') { doneSending(); showErr('⚠️ ' + (d.message || 'דירה זו כבר נרשמה') + '. לפניות: נציגות הבניין.'); }
+      else throw new Error();
+    })
+    .catch(() => { clearTimeout(killer); verifyViaStats(); });
+});
+
+// ── חגיגת רוב (אם MAJORITY_TARGET > 0) ──
+let majShown = false;
+function checkMajority(yes) {
+  if (!MAJORITY_TARGET || yes < MAJORITY_TARGET) return;
+  const pct = Math.round(yes / TOTAL * 100);
+  document.getElementById('majBanner').textContent = '🎉 הושג רוב של ' + pct + '% — ' + yes + ' דירות ' + (CHOICE_YES || 'אישרו') + '!';
+  document.getElementById('majBanner').style.display = 'block';
+  document.getElementById('majTitle').textContent = 'הושג רוב של ' + pct + '%!';
+  document.getElementById('majSub').textContent = MAJORITY_SUB;
+  document.getElementById('majPct').textContent = pct + '%';
+  document.getElementById('majCount').textContent = yes + ' דירות מתוך ' + TOTAL + (CHOICE_YES ? ' בחרו ' + CHOICE_YES : ' אישרו');
+  let seen = null; try { seen = localStorage.getItem('maj_seen_' + FORM_KEY); } catch(e) {}
+  if (majShown || seen) return;
+  majShown = true; try { localStorage.setItem('maj_seen_' + FORM_KEY, '1'); } catch(e) {}
+  setTimeout(() => { document.getElementById('majOverlay').classList.add('show'); startConfetti(); }, 500);
+}
+function closeMaj(){ document.getElementById('majOverlay').classList.remove('show'); stopConfetti(); }
+const cfCanvas = document.getElementById('confettiCanvas'), cfCtx = cfCanvas.getContext('2d');
+let cfRunning = false, cfPieces = [];
+const CF_COLORS = ['#1D9E75','#FFD700','#FF6B6B','#4FC3F7','#CE93D8','#FFB74D','#81C784'];
+function startConfetti(){
+  cfCanvas.style.display = 'block'; cfCanvas.width = innerWidth; cfCanvas.height = innerHeight; cfPieces = [];
+  for (let i = 0; i < 160; i++) cfPieces.push({ x: Math.random()*cfCanvas.width, y: -20 - Math.random()*cfCanvas.height*0.6, w: 7+Math.random()*6, h: 10+Math.random()*8, vy: 2+Math.random()*3, vx: -1.2+Math.random()*2.4, rot: Math.random()*Math.PI, vr: -0.12+Math.random()*0.24, color: CF_COLORS[Math.floor(Math.random()*CF_COLORS.length)] });
+  cfRunning = true; cfLoop(); setTimeout(stopConfetti, 6000);
+}
+function stopConfetti(){ cfRunning = false; }
+function cfLoop(){
+  cfCtx.clearRect(0,0,cfCanvas.width,cfCanvas.height); let alive = false;
+  cfPieces.forEach(p => { p.y += p.vy; p.x += p.vx + Math.sin(p.y/40); p.rot += p.vr; if (p.y < cfCanvas.height+30) alive = true; cfCtx.save(); cfCtx.translate(p.x,p.y); cfCtx.rotate(p.rot); cfCtx.fillStyle = p.color; cfCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h); cfCtx.restore(); });
+  if ((cfRunning || alive) && cfPieces.length) requestAnimationFrame(cfLoop); else cfCanvas.style.display = 'none';
+}
+
+// ── התקדמות (רק נתונים לא-אישיים מהשרת) ──
+// Apps Script איטי בקריאה הראשונה (1–4 שניות): מציגים מיד מהזיכרון המקומי ומרעננים ברקע
+const STATS_CACHE = 'stats_cache_' + FORM_KEY;
+const LD_TEXTS = ['מושך את הנתונים מהשרת המאובטח…', 'סופר…', 'עוד רגע, כמעט שם…', 'גוגל לפעמים מתעורר לאט ☕'];
+let ldTimer = null;
+function progLoading(on){
+  const el = document.getElementById('progLoading'), body = document.getElementById('progBody');
+  clearInterval(ldTimer);
+  if (!on) { el.style.display = 'none'; body.style.display = ''; return; }
+  el.style.display = 'block'; body.style.display = 'none';
+  let i = 0; document.getElementById('progLdText').textContent = LD_TEXTS[0];
+  ldTimer = setInterval(() => { i = Math.min(i + 1, LD_TEXTS.length - 1); document.getElementById('progLdText').textContent = LD_TEXTS[i]; }, 2200);
+}
+function progSync(t){ const s = document.getElementById('progSync'); if (s) s.textContent = t || ''; }
+
+function loadProgress(){
+  let cached = null;
+  try { cached = JSON.parse(localStorage.getItem(STATS_CACHE) || 'null'); } catch(e) {}
+  if (cached && cached.rows) { renderStats(cached); progSync('מעדכן…'); }
+  else progLoading(true);
+
+  fetch(SCRIPT_URL + '?action=formStats&form=' + encodeURIComponent(FORM_KEY))
+    .then(r => r.json())
+    .then(data => {
+      try { localStorage.setItem(STATS_CACHE, JSON.stringify(data)); } catch(e) {}
+      renderStats(data);
+      progSync('עודכן ✓'); setTimeout(() => progSync(''), 2000);
+    })
+    .catch(() => { progLoading(false); if (!cached) document.getElementById('progLabel').textContent = 'לא ניתן לטעון כרגע'; else progSync(''); });
+}
+
+function renderStats(data){
+  progLoading(false);
+  {
+      if (data.deadline === 'closed' || data.deadline === 'open') DEADLINE_OVERRIDE = data.deadline;
+      else if (data.deadline) { const d = new Date(data.deadline); if (!isNaN(d)) DEADLINE_OVERRIDE = d; }
+      updateDeadline();
+
+      const rows = data.rows || [], aptMap = {};
+      rows.forEach(r => { const n = parseInt(r.apt); if (!isNaN(n)) aptMap[n] = String(r.choice || ''); });
+      const voted = Object.keys(aptMap).map(Number);
+      const pct = Math.round(voted.length / TOTAL * 100);
+      document.getElementById('progLabel').innerHTML = voted.length + ' / ' + TOTAL + ' דירות אישרו (' + pct + '%)' + '<span class="prog-sync" id="progSync"></span>';
+      document.getElementById('progFill').style.width = pct + '%';
+
+      const withChoice = !!CHOICE_YES;
+      let yes = 0, no = 0;
+      if (withChoice) {
+        yes = voted.filter(a => aptMap[a] === CHOICE_YES).length; no = voted.filter(a => aptMap[a] === CHOICE_NO).length;
+        document.getElementById('voteSum').classList.add('on');
+        document.getElementById('cntYes').textContent = yes; document.getElementById('cntNo').textContent = no;
+        document.getElementById('lblYes').textContent = CHOICE_YES; document.getElementById('lblNo').textContent = CHOICE_NO;
+      }
+      document.getElementById('legend').innerHTML = withChoice
+        ? '<span><span class="sw" style="background:#e0f5ee;border:1px solid #9FE1CB"></span> ' + CHOICE_YES + '</span><span><span class="sw" style="background:#fdecea;border:1px solid #f5c6c0"></span> ' + CHOICE_NO + '</span><span><span class="sw" style="background:#f5f5f5;border:1px dashed #e0e0e0"></span> טרם</span>'
+        : '<span><span class="sw" style="background:#e0f5ee;border:1px solid #9FE1CB"></span> נרשם/ה</span><span><span class="sw" style="background:#f5f5f5;border:1px dashed #e0e0e0"></span> טרם</span>';
+      const grid = document.getElementById('aptGrid'); grid.innerHTML = '';
+      for (let i = 1; i <= TOTAL; i++) {
+        const c = document.createElement('div');
+        c.className = 'apt-cell ' + (!(i in aptMap) ? 'apt-off' : (withChoice && aptMap[i] === CHOICE_NO) ? 'apt-no' : 'apt-yes');
+        c.textContent = i; grid.appendChild(c);
+      }
+      markVotedApts(new Set(voted));
+      checkMajority(withChoice ? yes : voted.length);
+  }
+}
+loadProgress();
+</script>
+</body>
+</html>
