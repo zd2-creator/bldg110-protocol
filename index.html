@@ -94,6 +94,23 @@
   .gate-err { color:#c0392b; font-size:13px; margin-top:10px; display:none; }
   .gate-remember { font-size:11.5px; color:#999; margin-top:12px; }
 
+  /* פס התקדמות לרוב — בראש הדף */
+  .topprog { display:none; padding:14px 18px; }
+  .topprog.on { display:block; }
+  .tp-head { display:flex; justify-content:space-between; align-items:baseline; font-size:13px; color:#555; margin-bottom:8px; }
+  .tp-head b { font-size:15px; color:#0d6e52; }
+  .tp-bar { position:relative; height:16px; background:#eee; border-radius:10px; overflow:hidden; }
+  .tp-fill { height:100%; background:linear-gradient(90deg,#1D9E75,#5cc79b); border-radius:10px; transition:width .6s; width:0%; }
+  .tp-fill.done { background:linear-gradient(90deg,#0d6e52,#1D9E75); }
+  .tp-foot { display:flex; justify-content:space-between; font-size:11.5px; color:#999; margin-top:6px; }
+  .tp-foot .left { color:#b07d1e; font-weight:700; }
+
+  /* כפתור צף לטופס */
+  .fab-sign { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1D9E75; color:#fff; border:none; border-radius:30px; padding:13px 28px; font-size:15px; font-weight:800; font-family:inherit; cursor:pointer; box-shadow:0 4px 20px rgba(29,158,117,.5); z-index:100; white-space:nowrap; animation:fabIn .5s ease, fabPulse 2s ease 1s infinite; transition:opacity .3s, transform .3s; }
+  .fab-sign.hidden { opacity:0; pointer-events:none; transform:translateX(-50%) translateY(20px); }
+  @keyframes fabIn { from{transform:translateX(-50%) translateY(40px);opacity:0} to{transform:translateX(-50%) translateY(0);opacity:1} }
+  @keyframes fabPulse { 0%,100%{box-shadow:0 4px 20px rgba(29,158,117,.5)} 50%{box-shadow:0 4px 30px rgba(29,158,117,.8)} }
+
   /* טופס */
   .field { margin-bottom:14px; }
   label { display:block; font-size:13px; color:#555; margin-bottom:5px; font-weight:600; }
@@ -198,6 +215,12 @@
     <p>יעל רום 6, ראשון לציון · בעלי הדירות מתבקשים לאשר בחתימה</p>
   </div>
 
+  <div class="card topprog" id="topProg">
+    <div class="tp-head"><span>התקדמות לרוב הנדרש (67%)</span><b id="tpLabel">—</b></div>
+    <div class="tp-bar"><div class="tp-fill" id="tpFill"></div></div>
+    <div class="tp-foot"><span id="tpLeft" class="left"></span><span id="tpGoal"></span></div>
+  </div>
+
   <div class="deadline" id="deadlineBox">
     <span id="deadlineText">⏳ הטופס פתוח</span>
     <span class="cd" id="countdown"></span>
@@ -297,6 +320,7 @@
   </div>
 </div>
 
+<button class="fab-sign hidden" id="fabSign" onclick="scrollToForm()">✍️ לחתימה ↓</button>
 <div class="maj-overlay" id="majOverlay">
   <div class="maj-card">
     <span class="maj-emoji">🎉</span>
@@ -353,6 +377,18 @@ function checkGate(){
 }
 if (GATED && !GATE) showGate();
 
+const NOUN = 'אישורים';
+// ── כפתור צף שגולל לטופס; נעלם כשהטופס נראה או אחרי שליחה ──
+const fabBtn = document.getElementById('fabSign'), formCardEl = document.getElementById('formCard');
+let fabDone = false;
+function scrollToForm(){ fabDone = true; fabBtn.classList.add('hidden'); formCardEl.scrollIntoView({ behavior:'smooth', block:'start' }); }
+function fabCheck(){
+  if (fabDone || formCardEl.style.display === 'none') { fabBtn.classList.add('hidden'); return; }
+  const r = formCardEl.getBoundingClientRect();
+  fabBtn.classList.toggle('hidden', r.top + r.height * 0.4 < innerHeight);
+}
+addEventListener('scroll', fabCheck, { passive:true });
+setTimeout(fabCheck, 1200);
 let DEADLINE_OVERRIDE = null;
 function effectiveDeadline(){
   if (DEADLINE_OVERRIDE) return DEADLINE_OVERRIDE;
@@ -473,6 +509,7 @@ document.getElementById('submitBtn').addEventListener('click', function(){
 
   // הקובייה של הטופס מתחלפת במקומה בהודעת ההצלחה (לא כרטיס נפרד למטה שלא רואים)
   function onSuccess(){
+    fabDone = true; fabBtn.classList.add('hidden');
     clearTimeout(t1); clearTimeout(t2);
     const fc = document.getElementById('formCard');
     fc.className = 'card success'; fc.style.display = 'block';
@@ -602,6 +639,16 @@ function renderStats(data){
         const c = document.createElement('div');
         c.className = 'apt-cell ' + (!(i in aptMap) ? 'apt-off' : (withChoice && aptMap[i] === CHOICE_NO) ? 'apt-no' : 'apt-yes');
         c.textContent = i; grid.appendChild(c);
+      }
+      // פס התקדמות לרוב (רק אם הוגדר סף)
+      if (MAJORITY_TARGET) {
+        const done = withChoice ? yes : voted.length;
+        const tp = Math.min(100, Math.round(done / MAJORITY_TARGET * 100));
+        document.getElementById('topProg').classList.add('on');
+        document.getElementById('tpLabel').textContent = done + ' / ' + MAJORITY_TARGET + ' ' + NOUN + ' (' + tp + '%)';
+        const fill = document.getElementById('tpFill'); fill.style.width = tp + '%'; fill.classList.toggle('done', done >= MAJORITY_TARGET);
+        document.getElementById('tpLeft').textContent = done >= MAJORITY_TARGET ? '✓ הושג הרוב!' : 'נותרו עוד ' + (MAJORITY_TARGET - done) + ' דירות';
+        document.getElementById('tpGoal').textContent = 'יעד: ' + MAJORITY_TARGET + ' מתוך ' + TOTAL + ' דירות';
       }
       markVotedApts(new Set(voted));
       checkMajority(withChoice ? yes : voted.length);
