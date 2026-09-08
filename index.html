@@ -101,9 +101,12 @@
   .tp-head { display:flex; justify-content:space-between; align-items:baseline; font-size:13px; color:#555; margin-bottom:8px; }
   .tp-head b { font-size:15px; color:#0d6e52; }
   .tp-bar { position:relative; height:16px; background:#eee; border-radius:10px; overflow:hidden; }
+  /* קו היעד: הפס מודד מתוך 52 הדירות, והקו מסמן איפה עובר הרוב הנדרש —
+     כך הפס והאחוז מדברים באותה סקאלה ואי-אפשר לקרוא אותם כשני מדדים סותרים */
+  .tp-mark { position:absolute; top:0; bottom:0; width:2px; background:#b07d1e; opacity:.9; }
   .tp-fill { height:100%; background:linear-gradient(90deg,#1D9E75,#5cc79b); border-radius:10px; transition:width .6s; width:0%; }
   .tp-fill.done { background:linear-gradient(90deg,#0d6e52,#1D9E75); }
-  .tp-foot { display:flex; justify-content:space-between; font-size:11.5px; color:#999; margin-top:6px; }
+  .tp-foot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px 12px; font-size:11.5px; color:#999; margin-top:6px; }
   .tp-foot .left { color:#b07d1e; font-weight:700; }
 
   /* כפתור צף לטופס */
@@ -224,8 +227,8 @@
   </div>
 
   <div class="card topprog" id="topProg">
-    <div class="tp-head"><span>התקדמות לרוב הנדרש (67%)</span><b id="tpLabel">—</b></div>
-    <div class="tp-bar"><div class="tp-fill" id="tpFill"></div></div>
+    <div class="tp-head"><span>התקדמות החתימות</span><b id="tpLabel">—</b></div>
+    <div class="tp-bar"><div class="tp-fill" id="tpFill"></div><i class="tp-mark" id="tpMark" style="display:none"></i></div>
     <div class="tp-foot"><span id="tpLeft" class="left"></span><span id="tpGoal"></span></div>
   </div>
 
@@ -673,14 +676,15 @@ function renderStats(data){
       // פס התקדמות לרוב (רק אם הוגדר סף)
       if (MAJORITY_TARGET) {
         const done = withChoice ? yes : voted.length;
-        const tp = Math.min(100, Math.round(done / MAJORITY_TARGET * 100));
+        // הכל מתוך TOTAL: הפס, האחוז וקו היעד. מספר בודד לא יכול להיקרא מול מכנה אחר.
+        const pctAll = Math.round(done / TOTAL * 100);
         document.getElementById('topProg').classList.add('on');
-        // בלי אחוז מהיעד: "27/35 (77%)" ליד הכותרת "רוב נדרש (67%)" נקרא כאילו עברנו את הסף.
-        // האחוז היחיד שמוצג הוא מתוך 52 הדירות — הוא זה שקובע.
-        document.getElementById('tpLabel').textContent = done + ' / ' + MAJORITY_TARGET + ' ' + NOUN;
-        const fill = document.getElementById('tpFill'); fill.style.width = tp + '%'; fill.classList.toggle('done', done >= MAJORITY_TARGET);
-        document.getElementById('tpLeft').textContent = done >= MAJORITY_TARGET ? '✓ הושג הרוב!' : 'נותרו עוד ' + (MAJORITY_TARGET - done) + ' דירות';
-        document.getElementById('tpGoal').textContent = done + ' מתוך ' + TOTAL + ' דירות בבניין (' + Math.round(done / TOTAL * 100) + '%)';
+        document.getElementById('tpLabel').textContent = done + ' מתוך ' + TOTAL + ' דירות (' + pctAll + '%)';
+        const fill = document.getElementById('tpFill'); fill.style.width = pctAll + '%'; fill.classList.toggle('done', done >= MAJORITY_TARGET);
+        const mark = document.getElementById('tpMark');
+        mark.style.display = ''; mark.style.insetInlineStart = Math.round(MAJORITY_TARGET / TOTAL * 100) + '%';
+        document.getElementById('tpLeft').textContent = done >= MAJORITY_TARGET ? '✓ הושג הרוב!' : 'נשארו עוד ' + (MAJORITY_TARGET - done) + ' דירות להשגת רוב';
+        document.getElementById('tpGoal').textContent = 'הקו הכתום = הרוב הנדרש, ' + MAJORITY_TARGET + ' דירות (' + Math.round(MAJORITY_TARGET / TOTAL * 100) + '%)';
       }
       markVotedApts(new Set(voted));
       checkMajority(withChoice ? yes : voted.length);
