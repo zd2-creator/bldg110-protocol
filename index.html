@@ -432,18 +432,23 @@ function fmtDate(d){ return 'יום ' + DAYS[d.getDay()] + ' ' + d.getDate() + '
 function updateDeadline() {
   const box = document.getElementById('deadlineBox'), form = document.getElementById('formCard'), closed = document.getElementById('closedCard');
   const dl = effectiveDeadline();
-  if (!dl || dl === 'open') { box.style.display = 'none'; closed.style.display = 'none'; return; }
+  if (!dl || dl === 'open') { box.style.display = 'none'; closed.style.display = 'none'; form.style.display = ''; stopClosedPoll(); return; }
   const now = new Date();
   if (dl === 'closed' || now > dl) {
     form.style.display = 'none'; box.style.display = 'none'; closed.style.display = 'block';
     if (dl !== 'closed') document.getElementById('closedText').textContent = 'המועד האחרון היה ' + fmtDate(dl) + '.';
+    startClosedPoll();
     return;
   }
-  box.style.display = 'block'; closed.style.display = 'none';
+  box.style.display = 'block'; closed.style.display = 'none'; form.style.display = ''; stopClosedPoll();
   const ms = dl - now, d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4);
   document.getElementById('deadlineText').textContent = '⏳ פתוח עד ' + fmtDate(dl);
   document.getElementById('countdown').textContent = 'נותרו ' + (d > 0 ? d + ' ימים, ' : '') + h + ' שעות ו-' + pad2(m) + ' דקות';
 }
+// כשהטופס סגור: משיכה מהשרת פעם בדקה — פתיחה מחדש מהאדמין נראית בלי לרענן את הדף
+let closedPoll = null;
+function startClosedPoll(){ if (!closedPoll) closedPoll = setInterval(() => { if (typeof loadProgress === 'function') loadProgress(); }, 60000); }
+function stopClosedPoll(){ if (closedPoll) { clearInterval(closedPoll); closedPoll = null; } }
 updateDeadline();
 setInterval(updateDeadline, 30000);
 
@@ -646,7 +651,8 @@ function renderStats(data){
   progLoading(false);
   {
       if (data.deadline === 'closed' || data.deadline === 'open') DEADLINE_OVERRIDE = data.deadline;
-      else if (data.deadline) { const d = new Date(data.deadline); if (!isNaN(d)) DEADLINE_OVERRIDE = d; }
+      else if (data.deadline) { const d = new Date(data.deadline); DEADLINE_OVERRIDE = isNaN(d) ? null : d; }
+      else DEADLINE_OVERRIDE = null;
       updateDeadline();
 
       const rows = data.rows || [], aptMap = {};
