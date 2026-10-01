@@ -497,7 +497,19 @@ const canvas = document.getElementById('sigCanvas');
 let hasSig = false;
 if (canvas) {
   const ctx = canvas.getContext('2d'); let drawing = false;
-  function resize(){ const dpr = devicePixelRatio || 1, r = canvas.getBoundingClientRect(); if (canvas.width === r.width*dpr && canvas.height === r.height*dpr) return; canvas.width = r.width*dpr; canvas.height = r.height*dpr; ctx.scale(dpr,dpr); ctx.strokeStyle='#111'; ctx.lineWidth=2; ctx.lineCap='round'; ctx.lineJoin='round'; }
+  // שינוי גודל הקנבס מוחק את הציור — לכן: (1) משווים אחרי עיגול. בלי זה, בטלפונים עם צפיפות פיקסלים
+  // לא שלמה (2.625 וכו') ההשוואה אף פעם לא שווה, וכל resize — מקלדת שנפתחת, שורת כתובת בגלילה — מחק
+  // את החתימה. (2) אם הגודל באמת השתנה (סיבוב מסך), שומרים את הציור ומציירים אותו מחדש.
+  function resize(){
+    const dpr = devicePixelRatio || 1, r = canvas.getBoundingClientRect();
+    const w = Math.round(r.width * dpr), h = Math.round(r.height * dpr);
+    if (!w || !h || (w === canvas.width && h === canvas.height)) return;
+    let snap = null;
+    if (hasSig && canvas.width && canvas.height) { snap = document.createElement('canvas'); snap.width = canvas.width; snap.height = canvas.height; snap.getContext('2d').drawImage(canvas, 0, 0); }
+    canvas.width = w; canvas.height = h;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.strokeStyle='#111'; ctx.lineWidth=2; ctx.lineCap='round'; ctx.lineJoin='round';
+    if (snap) ctx.drawImage(snap, 0, 0, snap.width, snap.height, 0, 0, r.width, r.height);
+  }
   setTimeout(resize, 100); addEventListener('resize', resize);
   function pos(e){ const r=canvas.getBoundingClientRect(); const t=e.touches?e.touches[0]:e; return {x:t.clientX-r.left, y:t.clientY-r.top}; }
   function down(e){ e.preventDefault(); drawing=true; const p=pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); }
